@@ -24,13 +24,17 @@ function Sort() {
   const [open, setOpen] = React.useState(false);
   
   const onClickListItem = (obj: SortItem) => {
+    // @ts-ignore
     dispatch(setSort(obj));
     setOpen(false);
   }
 
   React.useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (!event.path.includes(sortRef.current)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      const _event = event as MouseEvent & {
+        path: Node[];
+      };
+      if (sortRef.current && !_event.path.includes(sortRef.current)) {
         setOpen(false);
       }
     } 
