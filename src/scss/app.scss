@@ -217,6 +217,27 @@ body {
             display: none;
           }
         }
+
+        &--disabled {
+          opacity: 0.4;
+          border-color: gray;
+
+          &:active {
+            transform: none;
+          }
+
+          &:hover {
+            background-color: transparent;
+
+            svg path{
+              fill: gray;
+            }
+          }
+
+          svg path{
+            fill: gray;
+          }
+        }
       }
 
       b {
